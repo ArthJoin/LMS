@@ -1,0 +1,135 @@
+{% extends 'base_lms.html' %}
+
+{% block title %} {{context.title}} {% endblock title %}
+
+
+{% block content %}
+<style>
+
+.container {
+    padding: 0px 20px;
+    margin-bottom: 30px;
+}
+.box {
+    display: flex; /* Используем flexbox для упорядочивания элементов */
+    align-items: stretch; /* Растягиваем содержимое по вертикали */
+    position: relative; /* Для позиционирования изображения */
+    overflow: hidden;
+    padding: 40px 20px;
+    border-radius: 15px; /* Добавил радиус границ для закругления */
+    transition: all .3s ease-in-out;
+    cursor: pointer;
+    justify-content: space-between; /* Элементы разместятся на противоположных концах */
+    align-items: center; 
+}
+.catalog-card-link {
+    text-decoration: none; /* Убираем подчеркивание */
+    color: inherit; /* Наследуем цвет текста от родительского элемента */
+    display: flex; /* Добавляем, если .catalog-card-link является flex контейнером */
+    justify-content: space-between; /* Подтверждаем распределение дочерних элементов */
+    align-items: center; /* Центрируем дочерние элементы вертикально */
+    text-align: left; /* Убеждаемся, что текст выровнен влево, если это необходимо */
+    width: 100%; /* Занимает всю доступную ширину */
+}
+
+.box:hover {
+    box-shadow: 3px 3px 15px #a5a5a5; /* Увеличил тень для большего выделения */
+    transform: scale(1.03);
+}
+.image-container {
+    flex-shrink: 0; /* Запрещаем сжатие блока с изображением */
+    width: 50%; /* Или другая ширина по вашему желанию */
+    height: 100%; /* Высота равна высоте родительского блока */
+    position: absolute; /* Абсолютное позиционирование внутри .box */
+    right: 0; /* Прижимаем к правой стороне */
+    top: 0; /* Прижимаем к верхней стороне */
+}
+
+.image-container img {
+    width: 100%; /* Изображение занимает всю ширину контейнера */
+    height: 100%; /* Изображение занимает всю высоту контейнера */
+    object-fit: cover; /* Обрезаем изображение, сохраняя его пропорции */
+}
+.text-muted {
+    text-decoration: none;
+    margin: 0;
+    font-size: 0.6rem;
+    color: #6c757d; /* Добавил цвет текста */
+    width: 60%;
+}
+
+
+b {
+    font-weight: 700; /* Увеличил вес шрифта для заголовков */
+}
+    
+    .pale-blue{
+        background-color: #eff8ff;
+    }
+    .pale-orange{
+        background-color: #ffe5b9;
+    }
+    .pale-purple{
+        background-color: #e8e8e8;
+    }
+    .pale-cyan{
+        background-color: #cffffe;
+    }
+    .pale-pink{
+        background-color: #ffe4e4;
+    }
+    .pale-pale{
+        background-color: #f4eeff;
+    }
+    .pale-green{
+        background-color: #a0ffe6;
+    }
+    .pale-pista{
+        background-color: #dbf6e9;
+    }
+
+    @media (max-width: 768px) {
+    .content-container, .image-container {
+        width: 100%; /* На маленьких экранах занимаем всю доступную ширину */
+    }
+    .box {
+        flex-direction: column; /* Элементы располагаются вертикально */
+    }
+    .image-container {
+        margin-top: 15px; /* Добавляем отступ сверху для изображения */
+    }
+}
+
+</style>
+
+<div class="container bg-light rounded">
+    <div class="h4 font-weight-bold text-center py-3"></div>
+    <div class="row">
+        {% for class in context.categories %}
+            <div class="col-lg-6 col-md-6 my-lg-0 my-3">
+                <a href="{% url 'catalog_detail' category_id=class.pk %}" class="box catalog-card-link bg-white">
+                    <div class="d-flex align-items-center">
+                        <div class="d-flex flex-column">
+                            <b>{{ class.title }}</b>
+                                <p class="text-muted">{{ class.description }} categories</p>
+                        </div>
+
+                        <div class="image-container">
+                            <img src="{{ class.image.url }}" alt="">
+                        </div>
+                    </div>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+
+
+
+{% block coueses %}
+    {% include  'courses.html'%}
+{% endblock %}
+
+
+{% endblock content %}

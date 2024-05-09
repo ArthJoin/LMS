@@ -1,0 +1,118 @@
+
+<style>
+
+/*  course style */
+.course-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.course-card {
+    display: flex;
+    border-radius: 15px;
+    background: #fff;
+    transition: all .3s ease-in-out;
+    cursor: pointer;
+}
+.course-card:hover {
+    box-shadow: 3px 3px 15px #a5a5a5; /* Увеличил тень для большего выделения */
+    transform: scale(1.005);
+}
+
+.course-image {
+    width: 150px; /* Адаптируйте размеры под ваш дизайн */
+    object-fit: cover; /* Убедитесь, что изображение полностью заполняет блок */
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+}
+
+.card-content {
+    padding: 20px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.course-title {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+.course-meta {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 0.9em;
+}
+
+.course-duration,
+.course-category {
+    margin-right: 10px;
+    background: #eef; /* Пример фона для отличия от остального текста */
+    padding: 5px;
+    border-radius: 5px;
+    color: #333; /* Цвет текста */
+}
+
+.course-tags {
+    display: flex;
+    flex-wrap: wrap;
+    color: #333; /* Цвет текста */
+}
+
+.tag {
+    background-color: #f1f1f1;
+    margin-right: 5px;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 0.75em;
+}
+
+.course-rating {
+    background-color: #ffed85; /* Фон для блока рейтинга */
+    border-radius: 5px;
+    padding: 5px 10px;
+    margin-bottom: 10px;
+    align-self: start; /* Выравниваем блок рейтинга в начало flex-контейнера */
+    font-weight: bold;
+    color: #333; /* Цвет текста */
+}
+
+.course-description {
+    font-size: 0.9em;
+    color: #666;
+}
+.course-link {
+    text-decoration: none; /* Убираем подчеркивание */
+    color: inherit; /* Наследуем цвет текста от родительского элемента */
+}
+
+</style>
+
+<div class="course-list">
+
+    {% for course in context.courses %}
+    <div class="course-card">
+        <img src="{{ course.image.url }}" alt="Course Image" class="course-image">
+        <a href="{% url 'course_detail' course_id=course.pk %}" class="card-content course-link">
+            <b class="course-title">{{ course.title }}</b>
+            <div class="course-meta">
+                
+                <span class="course-duration"><i class='bx bx-time' ></i> {{ course.duration }}</span>
+                <span class="course-category"><i class='bx bx-grid-alt'></i> {{ course.category }}</span>
+                <div class="course-tags">
+                    {% for tag in course.tag %}
+                    <span class="tag">{{ tag }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="course-rating">
+                <i class='bx bx-star' ></i>
+                <span>4.0</span>
+            </div>
+            <span class="course-description">{{ course.short_description }}</span>
+        </div>
+    </a>
+    {% endfor %}
+</div>
+

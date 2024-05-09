@@ -1,0 +1,68 @@
+<style>
+    .navbar-nav > .nav-item.dropdown {
+      position: relative; /* Должно быть relative для корректного позиционирования выпадающего меню */
+    }
+  
+    .dropdown-toggle::after {
+      display: none; /* Скрываем стрелку-указатель, если она не нужна */
+    }
+  
+    .nav-item .dropdown-menu .nav-link {
+      display: none; /* Скрыть выпадающее меню по умолчанию */
+      position: absolute; /* Абсолютное позиционирование относительно навигационного элемента */
+      top: 100%; /* Отображать сразу под навигационным элементом */
+      left: auto; /* Автоматическое позиционирование слева */
+      right: 0; /* Позиционировать с правого края элемента .nav-item */
+      border-radius: 10px; /* Скругление углов */
+      box-shadow: 5 5 15px rgba(0, 0, 0, 0.1); /* Тень для выпадающего списка */
+      z-index: 1000; /* Приоритет отображения */
+    }
+  
+    /* CSS-правило для отображения выпадающего меню при наведении или клике */
+    .nav-item.dropdown:focus-within .dropdown-menu,
+    .nav-item.dropdown.show .dropdown-menu {
+      display: block; /* Отображение выпадающего списка */
+    }
+  
+    /* Стили для профильного изображения */
+    .profile-image {
+      width: 48px;
+      height: 48px;
+      object-fit: cover;
+    }
+  </style>
+  
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <!-- ... other navbar content ... -->
+      <!-- Logo or brand name -->
+      <a class="navbar-brand" href="#">{{ context.title }}</a>
+      
+      <!-- Toggler for mobile screens -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      
+  
+      <!-- Navbar content -->
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item dropdown">
+            <a class="nav-link d-flex align-items-center" href="#"  role="button" aria-expanded="false">
+              <img src="{{ user.picture.url }}" alt="Profile" class="rounded-circle profile-image">
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
+              <li><a class="dropdown-item" href="{% url 'profile' %}">My account</a></li>
+              <li><a class="dropdown-item" href="#">Help</a></li>
+              <li><a class="dropdown-item" href="#">Kazakhstan</a></li>
+              <!-- Add more dropdown items here -->
+            </ul>
+          </li>
+          <!-- Other nav items -->
+        </ul>
+      </div>
+    </div>
+  </nav>
+  
+  

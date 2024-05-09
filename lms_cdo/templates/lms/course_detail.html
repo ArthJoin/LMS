@@ -1,0 +1,107 @@
+{% extends 'base_lms.html' %}
+
+{% block title %} {{context.title}} {% endblock title %}
+{% block navbar%}{% include 'components/back_btn.html' %}
+{% endblock %}
+
+
+{% block content %}
+
+<style>
+
+.category {
+  color: #978f8f; /* Bootstrap's default secondary text color */
+  font-size: 1.2em;
+}
+
+.Description,
+.meta {
+  background-color: #ffff; /* Light grey background */
+  padding: 20px;
+  border-radius: 5px;
+  margin-top: 40px;
+}
+
+.meta h2 {
+  font-size: 1.2em;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.meta p {
+  font-size: 0.9em;
+  margin-bottom: 10px;
+}
+
+.meta a.btn {
+  margin-right: 5px;
+  margin-top: 10px;
+}
+
+/* Custom styles for the back button to look less prominent */
+.btn-link {
+  font-weight: normal;
+  color: #007bff;
+  text-decoration: none;
+}
+
+.btn-link:hover {
+  text-decoration: underline;
+}
+
+/* Style for Java icon (if using FontAwesome) */
+.fab.fa-java {
+  color: #f89820; /* Java's color */
+}
+
+</style>
+
+
+<!-- Summary Panel -->
+
+
+  <div class="container mt-5">
+    <!-- Course Title -->
+    <h1 class="mt-4"> {{ context.course.title }}</h1>
+    <!-- Course Tags -->
+    <h3 class="category">{{ context.course.category }}</h3>
+    
+    <!-- Course Main Content -->
+    <div class="row">
+      <!-- Course Description -->
+        <div class="col-md-8">
+            <div class="Description">
+                <h2>Description</h2>
+                <p>{{context.course.description|safe}}</p>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="meta">
+                <h2>Meta information</h2>
+                <p><strong>Rating:</strong> {{context.course.rating}} avg. rate</p>
+                <p><strong>Estimated efforts:</strong> {{context.course.duration}} hrs</p>
+
+                {% if context.is_enrolled %}
+                    <form action="{% url 'unassign-course' context.course.id %}" method="post">
+                        {% csrf_token %}  
+                        <button type="submit" class="btn btn-warning">Unassign me</button>
+                    </form>
+                    <a href="{% url 'course' context.course.id %}" class="btn btn-primary mt-2">Study</a>
+                {% else %}
+                    <form action="{% url 'assign_course' context.course.id %}" method="post">     
+                        {% csrf_token %}                
+                        <button type="submit" class="btn btn-primary">Assign me</button>
+                    </form>
+                {% endif %}
+
+            </div>
+        </div>
+    </div>
+
+
+
+    
+  </div>
+
+{% endblock %}

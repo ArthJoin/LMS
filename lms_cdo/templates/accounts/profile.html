@@ -1,0 +1,118 @@
+{% extends 'base_lms.html' %}
+
+{% block title %} {{ title }} {% endblock title %}
+
+{% load static %}
+{% block header %}{%  endblock  %}
+
+{% block content %}
+
+<style>
+
+
+.card {
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+.link{
+    text-decoration: none;
+    color: #007bff;
+}
+    /* Стили для профильного изображения */
+.profile-image {
+    width: 256px;
+    height: 256px;
+    object-fit: cover;
+}
+.course-status{
+    margin-left: 10px;
+    background: rgb(238, 253, 255); /* Пример фона для отличия от остального текста */
+    padding: 5px;
+    border-radius: 5px;
+    color: #333; /* Цвет текста */
+}
+.icon {
+    font-size: 1em;
+    justify-content: center;
+    align-items: center;
+    margin-right: 5px;
+}
+
+</style>
+
+{% if user.is_authenticated %}
+<nav>
+    {%include 'components/back_btn.html' %}
+</nav>
+
+<div class="row">
+    <div class="col-md-3 mx-auto">
+        <div class="card p-2">
+            <div class="text-center">
+                <img src="{{ user.picture.url }}" class="profile-image rounded-circle mt-4 mb-4">
+                <ul class="px-2 list-unstyled">
+                    <li>{{ user.get_full_name|title }}</li>
+                    <li><strong>Last login: </strong>{{ user.last_login|date }}</li>
+                    <li><strong>Role: </strong>
+                        {{ user.get_user_role }}
+                    </li>
+                </ul>
+            </div>
+            <hr>
+            <a class="mb-2 link" href="#"><i class="fas fa-user-edit"></i>
+                <span class="mobile-hide">Edit Profile</span></a>
+            <a class="link" href="{% url 'change_password'%}"><i class="fas fa-lock"></i><span class="mobile-hide">
+                    Change password</span></a>
+        </div>
+    </div>
+
+    <div class="col-md-9 mx-auto">
+        <div class="card">
+            <div class="card-body">
+                <p class="fw-bold"><i class='bx bx-book-open nav_icon'></i> My Courses</p>
+                {% if courses %}
+                <ul>
+                    {% for course in courses %}
+                    <a class="link" href="{{ course.get_absolute_url }}">{{ course }}</a>
+                    <span class="course-status"><i class='bx bx-time icon' ></i>{{course.status}}</span>
+                    {% endfor %}
+                </ul>
+                {% else %}
+                <div class="text-danger">No courses assigned!</div>
+                {% endif %}
+                <hr>
+    
+                <p class="fw-bold"><i class='bx bx-user nav_icon'></i>  Personal Info</p>
+                <div class="">
+                    <ul>
+                        <p><strong>First Name:</strong> {{ user.first_name|title }}</p>
+                        <p><strong>Last Name:</strong> {{ user.last_name|title }}</p>
+                        <p><strong>ID No.:</strong> {{ user.username }}</p>
+                    </ul>
+                </div>
+                <hr>
+                <p class="fw-bold"><i class='bx bx-envelope nav_icon'></i> Contact Info</p>
+                <div class="">
+                    <ul>
+                        <p><strong>Email:</strong> {{ user.email }}</p>
+                        <p><strong>Tel No.:</strong> {{ user.phone }}</p>
+                        <p><strong>Address/city:</strong> {{ user.address }}</p>
+                    </ul>
+                </div>
+    
+                <hr>
+                <p class="fw-bold"><i class='bx bx-calendar nav_icon'></i> Important Dates</p>
+                <div class="">
+                    <ul>
+                        <p><strong>Last login:</strong> {{ user.last_login }}</p>
+                        <p><strong>Registered Date:</strong> {{ user.date_joined|date }}</p>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 mx-auto"></div>
+</div>
+{% endif %}
+{% endblock content %}

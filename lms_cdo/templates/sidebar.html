@@ -1,0 +1,73 @@
+
+<body id="body-pd">
+  <div class="l-navbar" id="nav-bar">
+      <nav class="nav">
+          <div> 
+              <a href="#" class="nav_logo"> 
+                <i class='bx bx-face nav_logo-icon'></i> 
+                <span class="nav_logo-name">LMS system</span> 
+              </a>
+              {% with request.resolver_match.url_name as url_name %}
+              
+              <div class="nav_list"> 
+                <a href="{% url 'home' %}" class="{% if url_name == 'home' %}nav_link active{% else %}nav_link{% endif %}"> 
+                  <i class='bx bx-home-alt nav_icon'></i> 
+                  <span class="nav_name">Home</span> 
+                </a> 
+                <a href="{% url 'learning' %}" class="{% if url_name == 'learning' %}nav_link active{% else %}nav_link{% endif %}"> 
+                  <i class='bx bx-book-open nav_icon'></i> 
+                  <span class="nav_name">My study</span> 
+                </a> 
+                <a href="#" class="{% if url_name == '' %}nav_link active{% else %}nav_link{% endif %}"> 
+                  <i class='bx bx-message-square-detail nav_icon'></i> 
+                  <span class="nav_name">Messages</span> 
+                </a> 
+                <a href="#" class="{% if url_name == '' %}nav_link active{% else %}nav_link{% endif %}"> 
+                    <i class='bx bx-bookmark nav_icon'></i> 
+                    <span class="nav_name">Bookmark</span> 
+                </a> 
+                <a href="{% url 'catalog' %}" class="{% if url_name == 'catalog' %}nav_link active{% else %}nav_link{% endif %}"> 
+                      <i class='bx bx-grid-alt nav_icon'></i> 
+                      <span class="nav_name">Catalog</span> 
+                </a> 
+                
+                </div>
+                {% endwith %}
+          </div> 
+
+          <div class="nav_toggle">
+            <a class="nav_collaps"> 
+              <i class='bx bx-menu nav_logo-icon' id="nav-toggle"></i> 
+            </a>
+          </div>
+          
+      </nav>
+  </div>
+
+  <script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+   
+   const showNavbar = (toggleId, navId, bodyId, headerId) =>{
+   const toggle = document.getElementById(toggleId),
+   nav = document.getElementById(navId),
+   bodypd = document.getElementById(bodyId)
+   
+   // Validate that all variables exist
+   if(toggle && nav && bodypd ){
+   toggle.addEventListener('click', ()=>{
+   // show navbar
+   nav.classList.toggle('show')
+   // change icon
+   toggle.classList.toggle('bx-x')
+   // add padding to body
+   bodypd.classList.toggle('body-pd')
+     })
+   }
+   }
+   
+   showNavbar('nav-toggle','nav-bar','body-pd')
+   });
+
+  </script>
+
+</body>

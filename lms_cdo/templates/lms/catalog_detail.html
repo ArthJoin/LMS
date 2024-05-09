@@ -1,0 +1,19 @@
+{% extends 'base_lms.html' %}
+
+{% block title %} {{context.title}} {% endblock title %}
+{% block navbar%}{% include 'components/back_btn.html' %}
+{% endblock %}
+
+{% block content %} 
+
+<style>
+    .courses-block {
+        margin-top: 40px;
+    }
+</style>
+
+<div class="courses-block">
+    {% include 'courses.html' %}
+</div>
+
+{% endblock %}

@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>{% block title %}DjangoSMS{% endblock title %}</title>
+
+        <!-- CSS only -->
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+
+</head>
+<body>
+
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap");
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        font-family: 'Nunito', sans-serif; /* Изменил с 'Poppins' на 'Nunito' */
+        text-decoration: none;
+    }
+    body {
+        background-color: #f8f8f8;
+    }
+    </style>
+
+    {% block navbar%} {% endblock %}
+    {% block header %}{% include 'header.html' %}{% endblock %}
+
+    {% block sidebar %}
+        {% include 'sidebar.html' %}
+    {% endblock %}
+    
+    {% block maincontent %}
+    <div id="main">
+        
+        <div class="container-fluid" id="main-content">
+            {% block content %}{% endblock content %}
+        </div>
+
+    </div>
+    {% endblock %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>  
+    {% block js %}
+    {% endblock js %}
+</body>
+</html>

@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% block title %} Home page {% endblock %}
+
+
+{% block content %}
+
+<body>
+  <div class="container mt-5">
+    <h1 class="text-center">Login Form</h1>
+    <form action="" method="POST" id="login-form">
+        {% csrf_token %}
+      <div class="mb-3">
+        <label for="username_id" class="form-label">Email address</label>
+        <input type="username" class="form-control" name="username" id="username_id" aria-describedby="emailHelp">
+        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+      </div>
+      <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input type="password" class="form-control" name="password" id="password_id" >
+      </div>
+        {% if form.errors %}
+        <div class="text-danger">
+            {% for field in form %}
+                {% for error in field.errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            {% endfor %}
+            {% for error in form.non_field_errors %}
+                <p>{{ error }}</p>
+            {% endfor %}
+        </div>
+    {% endif %}    
+      <button type="submit" class="btn btn-primary" id="login-btn">Submit</button>
+    </form>
+  </div>
+    
+{% endblock %}
+
+{% block js %}
+
+<script>
+  $('#login-form').submit(function (e) {
+    // e.preventDefault();
+    $('#login-btn').addClass('disabled')
+    $('#login-btn').html(`<i class="fas fa-sign-in-alt"></i> Signining you in . . .`)
+  })
+
+  $("#username").on("input", function () {
+    username = $(this).val();
+
+    $.ajax({
+      url: "/accounts/ajax/validate-username/",
+      data: {
+        username: username
+      },
+      dataType: 'json',
+      success: function (data) {
+        if (data.is_taken) {
+          console.log(data.is_taken);
+          $('#message-wrapper').html(`<p class="my-2 text-danger"><span class="bg-error p-2"><b>${username}</b> already taken :( try another one </span></p>`)
+        }
+        else {
+          $('#message-wrapper').html(`<p class="my-2 text-success"><span class="bg-correct p-2"><b>${username}</b> is valid </span></p>`)
+        }
+      }
+
+    })
+  })
+</script>
+{% endblock %}
+
+
+    
