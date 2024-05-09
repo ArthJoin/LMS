@@ -4,7 +4,7 @@ from django.contrib.auth import login
 from django.http import JsonResponse
 from .models import User, Student
 from lms.models import Course, CourseProgress
-from .forms import StudentAddForm
+from .forms import StudentAddForm, ProfileUpdateForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import PasswordChangeForm
@@ -68,6 +68,32 @@ def change_password(request):
         request,
         "registration/password_change.html",
         {
+            "form": form,
+        },
+    )
+
+
+@login_required
+def edit_profile(request, profile_id):
+    # instance = User.objects.get(pk=pk)
+    instance = get_object_or_404(User, pk=profile_id)
+    if request.method == "POST":
+        form = ProfileUpdateForm(request.POST, request.FILES, instance=instance)
+        full_name = instance.get_full_name
+        if form.is_valid():
+            form.save()
+
+            messages.success(request, ("Student " + full_name + " has been updated."))
+            return redirect("profile")
+        else:
+            messages.error(request, "Please correct the error below.")
+    else:
+        form = ProfileUpdateForm(instance=instance)
+    return render(
+        request,
+        "accounts/edit_student.html",
+        {
+            "title": "Edit-profile",
             "form": form,
         },
     )

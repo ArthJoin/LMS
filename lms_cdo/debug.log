@@ -8588,3 +8588,747 @@ INFO 2024-05-09 12:22:37,656 basehttp "GET / HTTP/1.1" 200 1575
 INFO 2024-05-09 12:22:40,187 basehttp "GET /lms/home HTTP/1.1" 200 6720
 INFO 2024-05-09 12:22:48,058 autoreload /Users/arturnavruzov/Desktop/graduate/lms_cdo/lms_cdo/lms_cdo/settings.py changed, reloading.
 INFO 2024-05-09 12:22:48,569 autoreload Watching for file changes with StatReloader
+INFO 2024-05-09 16:03:57,068 basehttp "GET /lms/home HTTP/1.1" 200 6720
+INFO 2024-05-09 16:03:58,831 basehttp "GET /accounts/profile HTTP/1.1" 200 7669
+INFO 2024-05-09 16:04:00,876 basehttp "GET /accounts/change_password/ HTTP/1.1" 200 9167
+INFO 2024-05-09 16:04:04,793 basehttp "GET / HTTP/1.1" 200 1575
+INFO 2024-05-09 16:04:08,657 basehttp "GET /accounts/login/ HTTP/1.1" 200 2490
+INFO 2024-05-09 16:04:10,206 basehttp "POST /accounts/login/ HTTP/1.1" 302 0
+INFO 2024-05-09 16:04:10,210 basehttp "GET / HTTP/1.1" 200 1575
+INFO 2024-05-09 16:04:12,499 basehttp "GET /lms/home HTTP/1.1" 200 6720
+INFO 2024-05-09 16:04:13,838 basehttp "GET /accounts/profile HTTP/1.1" 200 7668
+INFO 2024-05-09 16:17:23,875 autoreload /Users/arturnavruzov/Desktop/graduate/lms_cdo/lms_cdo/accounts/forms.py changed, reloading.
+INFO 2024-05-09 16:17:24,359 autoreload Watching for file changes with StatReloader
+INFO 2024-05-09 16:17:31,498 autoreload /Users/arturnavruzov/Desktop/graduate/lms_cdo/lms_cdo/accounts/views.py changed, reloading.
+INFO 2024-05-09 16:17:31,788 autoreload Watching for file changes with StatReloader
+INFO 2024-05-09 16:18:51,126 autoreload /Users/arturnavruzov/Desktop/graduate/lms_cdo/lms_cdo/accounts/urls.py changed, reloading.
+INFO 2024-05-09 16:18:51,465 autoreload Watching for file changes with StatReloader
+INFO 2024-05-09 16:19:46,256 autoreload /Users/arturnavruzov/Desktop/graduate/lms_cdo/lms_cdo/accounts/urls.py changed, reloading.
+INFO 2024-05-09 16:19:46,612 autoreload Watching for file changes with StatReloader
+INFO 2024-05-09 16:20:01,926 basehttp "GET /accounts/profile HTTP/1.1" 200 7693
+ERROR 2024-05-09 16:20:03,388 log Internal Server Error: /accounts/progfile_update/
+Traceback (most recent call last):
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+               ^^^^^^^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/forms/utils.py", line 54, in render
+    context = context or self.get_context()
+                         ^^^^^^^^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/forms/forms.py", line 225, in get_context
+    top_errors = self.non_field_errors().copy()
+                 ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/forms/forms.py", line 252, in non_field_errors
+    return self.errors.get(
+           ^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/forms/forms.py", line 192, in errors
+    self.full_clean()
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/forms/forms.py", line 327, in full_clean
+    self._clean_fields()
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/forms/forms.py", line 334, in _clean_fields
+    value = bf.initial if field.disabled else bf.data
+                                              ^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/forms/boundfield.py", line 136, in data
+    return self.form._widget_data_value(self.field.widget, self.html_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/forms/forms.py", line 216, in _widget_data_value
+    return widget.value_from_datadict(self.data, self.files, html_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/forms/widgets.py", line 295, in value_from_datadict
+    return data.get(name)
+           ^^^^^^^^
+AttributeError: 'WSGIRequest' object has no attribute 'get'
+ERROR 2024-05-09 16:20:03,390 basehttp "GET /accounts/progfile_update/ HTTP/1.1" 500 100892
+ERROR 2024-05-09 16:22:24,262 log Internal Server Error: /accounts/progfile_update/
+Traceback (most recent call last):
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+               ^^^^^^^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/forms/utils.py", line 54, in render
+    context = context or self.get_context()
+                         ^^^^^^^^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/forms/forms.py", line 225, in get_context
+    top_errors = self.non_field_errors().copy()
+                 ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/forms/forms.py", line 252, in non_field_errors
+    return self.errors.get(
+           ^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/forms/forms.py", line 192, in errors
+    self.full_clean()
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/forms/forms.py", line 327, in full_clean
+    self._clean_fields()
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/forms/forms.py", line 334, in _clean_fields
+    value = bf.initial if field.disabled else bf.data
+                                              ^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/forms/boundfield.py", line 136, in data
+    return self.form._widget_data_value(self.field.widget, self.html_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/forms/forms.py", line 216, in _widget_data_value
+    return widget.value_from_datadict(self.data, self.files, html_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/forms/widgets.py", line 295, in value_from_datadict
+    return data.get(name)
+           ^^^^^^^^
+AttributeError: 'WSGIRequest' object has no attribute 'get'
+ERROR 2024-05-09 16:22:24,264 basehttp "GET /accounts/progfile_update/ HTTP/1.1" 500 101029
+INFO 2024-05-09 16:34:24,134 autoreload /Users/arturnavruzov/Desktop/graduate/lms_cdo/lms_cdo/accounts/urls.py changed, reloading.
+INFO 2024-05-09 16:34:24,559 autoreload Watching for file changes with StatReloader
+INFO 2024-05-09 16:34:26,710 autoreload /Users/arturnavruzov/Desktop/graduate/lms_cdo/lms_cdo/accounts/urls.py changed, reloading.
+INFO 2024-05-09 16:34:26,896 autoreload Watching for file changes with StatReloader
+WARNING 2024-05-09 16:34:44,931 log Not Found: /accounts/progfile_update/
+WARNING 2024-05-09 16:34:44,935 basehttp "GET /accounts/progfile_update/ HTTP/1.1" 404 5478
+WARNING 2024-05-09 16:34:51,288 log Not Found: /accounts/progfile_update/
+WARNING 2024-05-09 16:34:51,288 basehttp "GET /accounts/progfile_update/ HTTP/1.1" 404 5478
+INFO 2024-05-09 16:35:06,472 basehttp "GET /lms/catalog HTTP/1.1" 200 16132
+INFO 2024-05-09 16:35:06,489 basehttp "GET /media/profile_pictures/24/04/22/images-2.jpeg HTTP/1.1" 200 6577
+INFO 2024-05-09 16:35:06,490 basehttp "GET /static/css/style.css HTTP/1.1" 200 2519
+INFO 2024-05-09 16:35:06,491 basehttp "GET /static/bootstrap/css/bootstrap.min.css HTTP/1.1" 200 155845
+INFO 2024-05-09 16:35:06,496 basehttp "GET /static/bootstrap/js/bootstrap.bundle.min.js HTTP/1.1" 200 78743
+INFO 2024-05-09 16:35:10,299 basehttp "GET /accounts/profile HTTP/1.1" 200 7692
+ERROR 2024-05-09 16:35:12,733 log Internal Server Error: /accounts/profile_update/
+Traceback (most recent call last):
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+               ^^^^^^^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/forms/utils.py", line 54, in render
+    context = context or self.get_context()
+                         ^^^^^^^^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/forms/forms.py", line 225, in get_context
+    top_errors = self.non_field_errors().copy()
+                 ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/forms/forms.py", line 252, in non_field_errors
+    return self.errors.get(
+           ^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/forms/forms.py", line 192, in errors
+    self.full_clean()
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/forms/forms.py", line 327, in full_clean
+    self._clean_fields()
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/forms/forms.py", line 334, in _clean_fields
+    value = bf.initial if field.disabled else bf.data
+                                              ^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/forms/boundfield.py", line 136, in data
+    return self.form._widget_data_value(self.field.widget, self.html_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/forms/forms.py", line 216, in _widget_data_value
+    return widget.value_from_datadict(self.data, self.files, html_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/forms/widgets.py", line 295, in value_from_datadict
+    return data.get(name)
+           ^^^^^^^^
+AttributeError: 'WSGIRequest' object has no attribute 'get'
+ERROR 2024-05-09 16:35:12,739 basehttp "GET /accounts/profile_update/ HTTP/1.1" 500 100580
+INFO 2024-05-09 16:36:23,683 autoreload /Users/arturnavruzov/Desktop/graduate/lms_cdo/lms_cdo/accounts/views.py changed, reloading.
+INFO 2024-05-09 16:36:24,108 autoreload Watching for file changes with StatReloader
+ERROR 2024-05-09 16:36:26,441 log Internal Server Error: /accounts/profile_update/
+Traceback (most recent call last):
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+               ^^^^^^^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/forms/utils.py", line 54, in render
+    context = context or self.get_context()
+                         ^^^^^^^^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/forms/forms.py", line 225, in get_context
+    top_errors = self.non_field_errors().copy()
+                 ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/forms/forms.py", line 252, in non_field_errors
+    return self.errors.get(
+           ^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/forms/forms.py", line 192, in errors
+    self.full_clean()
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/forms/forms.py", line 327, in full_clean
+    self._clean_fields()
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/forms/forms.py", line 334, in _clean_fields
+    value = bf.initial if field.disabled else bf.data
+                                              ^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/forms/boundfield.py", line 136, in data
+    return self.form._widget_data_value(self.field.widget, self.html_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/forms/forms.py", line 216, in _widget_data_value
+    return widget.value_from_datadict(self.data, self.files, html_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/forms/widgets.py", line 295, in value_from_datadict
+    return data.get(name)
+           ^^^^^^^^
+AttributeError: 'WSGIRequest' object has no attribute 'get'
+ERROR 2024-05-09 16:36:26,444 basehttp "GET /accounts/profile_update/ HTTP/1.1" 500 100717
+ERROR 2024-05-09 16:36:27,243 log Internal Server Error: /accounts/profile_update/
+Traceback (most recent call last):
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+               ^^^^^^^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/forms/utils.py", line 54, in render
+    context = context or self.get_context()
+                         ^^^^^^^^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/forms/forms.py", line 225, in get_context
+    top_errors = self.non_field_errors().copy()
+                 ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/forms/forms.py", line 252, in non_field_errors
+    return self.errors.get(
+           ^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/forms/forms.py", line 192, in errors
+    self.full_clean()
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/forms/forms.py", line 327, in full_clean
+    self._clean_fields()
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/forms/forms.py", line 334, in _clean_fields
+    value = bf.initial if field.disabled else bf.data
+                                              ^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/forms/boundfield.py", line 136, in data
+    return self.form._widget_data_value(self.field.widget, self.html_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/forms/forms.py", line 216, in _widget_data_value
+    return widget.value_from_datadict(self.data, self.files, html_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/forms/widgets.py", line 295, in value_from_datadict
+    return data.get(name)
+           ^^^^^^^^
+AttributeError: 'WSGIRequest' object has no attribute 'get'
+ERROR 2024-05-09 16:36:27,244 basehttp "GET /accounts/profile_update/ HTTP/1.1" 500 100717
+INFO 2024-05-09 16:36:29,391 basehttp "GET /accounts/change_password/ HTTP/1.1" 200 8971
+ERROR 2024-05-09 16:36:31,467 log Internal Server Error: /accounts/profile_update/
+Traceback (most recent call last):
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+               ^^^^^^^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/forms/utils.py", line 54, in render
+    context = context or self.get_context()
+                         ^^^^^^^^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/forms/forms.py", line 225, in get_context
+    top_errors = self.non_field_errors().copy()
+                 ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/forms/forms.py", line 252, in non_field_errors
+    return self.errors.get(
+           ^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/forms/forms.py", line 192, in errors
+    self.full_clean()
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/forms/forms.py", line 327, in full_clean
+    self._clean_fields()
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/forms/forms.py", line 334, in _clean_fields
+    value = bf.initial if field.disabled else bf.data
+                                              ^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/forms/boundfield.py", line 136, in data
+    return self.form._widget_data_value(self.field.widget, self.html_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/forms/forms.py", line 216, in _widget_data_value
+    return widget.value_from_datadict(self.data, self.files, html_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/forms/widgets.py", line 295, in value_from_datadict
+    return data.get(name)
+           ^^^^^^^^
+AttributeError: 'WSGIRequest' object has no attribute 'get'
+ERROR 2024-05-09 16:36:31,468 basehttp "GET /accounts/profile_update/ HTTP/1.1" 500 100882
+INFO 2024-05-09 16:36:53,679 autoreload /Users/arturnavruzov/Desktop/graduate/lms_cdo/lms_cdo/accounts/views.py changed, reloading.
+INFO 2024-05-09 16:36:54,109 autoreload Watching for file changes with StatReloader
+ERROR 2024-05-09 16:36:54,642 log Internal Server Error: /accounts/profile_update/
+Traceback (most recent call last):
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+               ^^^^^^^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/forms/utils.py", line 54, in render
+    context = context or self.get_context()
+                         ^^^^^^^^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/forms/forms.py", line 225, in get_context
+    top_errors = self.non_field_errors().copy()
+                 ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/forms/forms.py", line 252, in non_field_errors
+    return self.errors.get(
+           ^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/forms/forms.py", line 192, in errors
+    self.full_clean()
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/forms/forms.py", line 327, in full_clean
+    self._clean_fields()
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/forms/forms.py", line 334, in _clean_fields
+    value = bf.initial if field.disabled else bf.data
+                                              ^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/forms/boundfield.py", line 136, in data
+    return self.form._widget_data_value(self.field.widget, self.html_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/forms/forms.py", line 216, in _widget_data_value
+    return widget.value_from_datadict(self.data, self.files, html_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/forms/widgets.py", line 295, in value_from_datadict
+    return data.get(name)
+           ^^^^^^^^
+AttributeError: 'WSGIRequest' object has no attribute 'get'
+ERROR 2024-05-09 16:36:54,645 basehttp "GET /accounts/profile_update/ HTTP/1.1" 500 101019
+INFO 2024-05-09 16:37:19,131 autoreload Watching for file changes with StatReloader
+ERROR 2024-05-09 16:37:21,760 log Internal Server Error: /accounts/profile_update/
+Traceback (most recent call last):
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+               ^^^^^^^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/forms/utils.py", line 54, in render
+    context = context or self.get_context()
+                         ^^^^^^^^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/forms/forms.py", line 225, in get_context
+    top_errors = self.non_field_errors().copy()
+                 ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/forms/forms.py", line 252, in non_field_errors
+    return self.errors.get(
+           ^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/forms/forms.py", line 192, in errors
+    self.full_clean()
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/forms/forms.py", line 327, in full_clean
+    self._clean_fields()
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/forms/forms.py", line 334, in _clean_fields
+    value = bf.initial if field.disabled else bf.data
+                                              ^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/forms/boundfield.py", line 136, in data
+    return self.form._widget_data_value(self.field.widget, self.html_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/forms/forms.py", line 216, in _widget_data_value
+    return widget.value_from_datadict(self.data, self.files, html_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/forms/widgets.py", line 295, in value_from_datadict
+    return data.get(name)
+           ^^^^^^^^
+AttributeError: 'WSGIRequest' object has no attribute 'get'
+ERROR 2024-05-09 16:37:21,763 basehttp "GET /accounts/profile_update/ HTTP/1.1" 500 101019
+INFO 2024-05-09 16:37:24,686 basehttp "GET /lms/catalog HTTP/1.1" 200 16132
+INFO 2024-05-09 16:37:26,459 basehttp "GET /accounts/profile HTTP/1.1" 200 7692
+ERROR 2024-05-09 16:37:28,096 log Internal Server Error: /accounts/profile_update/
+Traceback (most recent call last):
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+               ^^^^^^^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/forms/utils.py", line 54, in render
+    context = context or self.get_context()
+                         ^^^^^^^^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/forms/forms.py", line 225, in get_context
+    top_errors = self.non_field_errors().copy()
+                 ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/forms/forms.py", line 252, in non_field_errors
+    return self.errors.get(
+           ^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/forms/forms.py", line 192, in errors
+    self.full_clean()
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/forms/forms.py", line 327, in full_clean
+    self._clean_fields()
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/forms/forms.py", line 334, in _clean_fields
+    value = bf.initial if field.disabled else bf.data
+                                              ^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/forms/boundfield.py", line 136, in data
+    return self.form._widget_data_value(self.field.widget, self.html_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/forms/forms.py", line 216, in _widget_data_value
+    return widget.value_from_datadict(self.data, self.files, html_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/forms/widgets.py", line 295, in value_from_datadict
+    return data.get(name)
+           ^^^^^^^^
+AttributeError: 'WSGIRequest' object has no attribute 'get'
+ERROR 2024-05-09 16:37:28,098 basehttp "GET /accounts/profile_update/ HTTP/1.1" 500 100882
+INFO 2024-05-09 16:37:34,601 autoreload /Users/arturnavruzov/Desktop/graduate/lms_cdo/lms_cdo/accounts/views.py changed, reloading.
+INFO 2024-05-09 16:37:34,907 autoreload Watching for file changes with StatReloader
+ERROR 2024-05-09 16:37:37,635 log Internal Server Error: /accounts/profile_update/
+Traceback (most recent call last):
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+               ^^^^^^^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/forms/utils.py", line 54, in render
+    context = context or self.get_context()
+                         ^^^^^^^^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/forms/forms.py", line 225, in get_context
+    top_errors = self.non_field_errors().copy()
+                 ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/forms/forms.py", line 252, in non_field_errors
+    return self.errors.get(
+           ^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/forms/forms.py", line 192, in errors
+    self.full_clean()
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/forms/forms.py", line 327, in full_clean
+    self._clean_fields()
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/forms/forms.py", line 334, in _clean_fields
+    value = bf.initial if field.disabled else bf.data
+                                              ^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/forms/boundfield.py", line 136, in data
+    return self.form._widget_data_value(self.field.widget, self.html_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/forms/forms.py", line 216, in _widget_data_value
+    return widget.value_from_datadict(self.data, self.files, html_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/forms/widgets.py", line 295, in value_from_datadict
+    return data.get(name)
+           ^^^^^^^^
+AttributeError: 'WSGIRequest' object has no attribute 'get'
+ERROR 2024-05-09 16:37:37,639 basehttp "GET /accounts/profile_update/ HTTP/1.1" 500 101019
+INFO 2024-05-09 16:37:51,278 autoreload /Users/arturnavruzov/Desktop/graduate/lms_cdo/lms_cdo/accounts/views.py changed, reloading.
+INFO 2024-05-09 16:37:51,579 autoreload Watching for file changes with StatReloader
+ERROR 2024-05-09 16:37:52,649 log Internal Server Error: /accounts/profile_update/
+Traceback (most recent call last):
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+               ^^^^^^^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/forms/utils.py", line 54, in render
+    context = context or self.get_context()
+                         ^^^^^^^^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/forms/forms.py", line 225, in get_context
+    top_errors = self.non_field_errors().copy()
+                 ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/forms/forms.py", line 252, in non_field_errors
+    return self.errors.get(
+           ^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/forms/forms.py", line 192, in errors
+    self.full_clean()
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/forms/forms.py", line 327, in full_clean
+    self._clean_fields()
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/forms/forms.py", line 334, in _clean_fields
+    value = bf.initial if field.disabled else bf.data
+                                              ^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/forms/boundfield.py", line 136, in data
+    return self.form._widget_data_value(self.field.widget, self.html_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/forms/forms.py", line 216, in _widget_data_value
+    return widget.value_from_datadict(self.data, self.files, html_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/forms/widgets.py", line 295, in value_from_datadict
+    return data.get(name)
+           ^^^^^^^^
+AttributeError: 'WSGIRequest' object has no attribute 'get'
+ERROR 2024-05-09 16:37:52,652 basehttp "GET /accounts/profile_update/ HTTP/1.1" 500 101019
+ERROR 2024-05-09 16:37:53,308 log Internal Server Error: /accounts/profile_update/
+Traceback (most recent call last):
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+               ^^^^^^^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/forms/utils.py", line 54, in render
+    context = context or self.get_context()
+                         ^^^^^^^^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/forms/forms.py", line 225, in get_context
+    top_errors = self.non_field_errors().copy()
+                 ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/forms/forms.py", line 252, in non_field_errors
+    return self.errors.get(
+           ^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/forms/forms.py", line 192, in errors
+    self.full_clean()
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/forms/forms.py", line 327, in full_clean
+    self._clean_fields()
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/forms/forms.py", line 334, in _clean_fields
+    value = bf.initial if field.disabled else bf.data
+                                              ^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/forms/boundfield.py", line 136, in data
+    return self.form._widget_data_value(self.field.widget, self.html_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/forms/forms.py", line 216, in _widget_data_value
+    return widget.value_from_datadict(self.data, self.files, html_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/forms/widgets.py", line 295, in value_from_datadict
+    return data.get(name)
+           ^^^^^^^^
+AttributeError: 'WSGIRequest' object has no attribute 'get'
+ERROR 2024-05-09 16:37:53,309 basehttp "GET /accounts/profile_update/ HTTP/1.1" 500 101019
+ERROR 2024-05-09 16:37:54,973 log Internal Server Error: /accounts/profile_update/
+Traceback (most recent call last):
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+               ^^^^^^^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/forms/utils.py", line 54, in render
+    context = context or self.get_context()
+                         ^^^^^^^^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/forms/forms.py", line 225, in get_context
+    top_errors = self.non_field_errors().copy()
+                 ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/forms/forms.py", line 252, in non_field_errors
+    return self.errors.get(
+           ^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/forms/forms.py", line 192, in errors
+    self.full_clean()
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/forms/forms.py", line 327, in full_clean
+    self._clean_fields()
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/forms/forms.py", line 334, in _clean_fields
+    value = bf.initial if field.disabled else bf.data
+                                              ^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/forms/boundfield.py", line 136, in data
+    return self.form._widget_data_value(self.field.widget, self.html_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/forms/forms.py", line 216, in _widget_data_value
+    return widget.value_from_datadict(self.data, self.files, html_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/forms/widgets.py", line 295, in value_from_datadict
+    return data.get(name)
+           ^^^^^^^^
+AttributeError: 'WSGIRequest' object has no attribute 'get'
+ERROR 2024-05-09 16:37:54,973 basehttp "GET /accounts/profile_update/ HTTP/1.1" 500 100882
+INFO 2024-05-09 16:38:06,859 autoreload /Users/arturnavruzov/Desktop/graduate/lms_cdo/lms_cdo/accounts/urls.py changed, reloading.
+INFO 2024-05-09 16:38:07,161 autoreload Watching for file changes with StatReloader
+ERROR 2024-05-09 16:38:08,984 log Internal Server Error: /accounts/profile_update/
+Traceback (most recent call last):
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: edit_student() missing 1 required positional argument: 'pk'
+ERROR 2024-05-09 16:38:08,986 basehttp "GET /accounts/profile_update/ HTTP/1.1" 500 70213
+ERROR 2024-05-09 16:38:09,848 log Internal Server Error: /accounts/profile_update/
+Traceback (most recent call last):
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: edit_student() missing 1 required positional argument: 'pk'
+ERROR 2024-05-09 16:38:09,849 basehttp "GET /accounts/profile_update/ HTTP/1.1" 500 70213
+INFO 2024-05-09 16:38:55,170 autoreload /Users/arturnavruzov/Desktop/graduate/lms_cdo/lms_cdo/accounts/urls.py changed, reloading.
+INFO 2024-05-09 16:38:55,500 autoreload Watching for file changes with StatReloader
+WARNING 2024-05-09 16:39:21,245 log Not Found: /accounts/profile_update/
+WARNING 2024-05-09 16:39:21,249 basehttp "GET /accounts/profile_update/ HTTP/1.1" 404 5495
+INFO 2024-05-09 16:39:32,221 autoreload /Users/arturnavruzov/Desktop/graduate/lms_cdo/lms_cdo/accounts/urls.py changed, reloading.
+INFO 2024-05-09 16:39:32,536 autoreload Watching for file changes with StatReloader
+WARNING 2024-05-09 16:39:36,487 log Not Found: /accounts/profile_update/
+WARNING 2024-05-09 16:39:36,490 basehttp "GET /accounts/profile_update/ HTTP/1.1" 404 5495
+INFO 2024-05-09 16:41:00,764 autoreload /Users/arturnavruzov/Desktop/graduate/lms_cdo/lms_cdo/accounts/urls.py changed, reloading.
+INFO 2024-05-09 16:41:01,086 autoreload Watching for file changes with StatReloader
+INFO 2024-05-09 16:41:05,231 autoreload /Users/arturnavruzov/Desktop/graduate/lms_cdo/lms_cdo/accounts/urls.py changed, reloading.
+INFO 2024-05-09 16:41:05,413 autoreload Watching for file changes with StatReloader
+WARNING 2024-05-09 16:41:09,384 log Not Found: /accounts/profile_update/
+WARNING 2024-05-09 16:41:09,386 basehttp "GET /accounts/profile_update/ HTTP/1.1" 404 5488
+WARNING 2024-05-09 16:41:10,249 log Not Found: /accounts/profile_update/
+WARNING 2024-05-09 16:41:10,250 basehttp "GET /accounts/profile_update/ HTTP/1.1" 404 5488
+WARNING 2024-05-09 16:41:11,173 log Not Found: /accounts/profile_update/
+WARNING 2024-05-09 16:41:11,173 basehttp "GET /accounts/profile_update/ HTTP/1.1" 404 5488
+WARNING 2024-05-09 16:41:12,580 log Not Found: /accounts/profile_update/
+WARNING 2024-05-09 16:41:12,580 basehttp "GET /accounts/profile_update/ HTTP/1.1" 404 5488
+INFO 2024-05-09 16:41:32,958 autoreload /Users/arturnavruzov/Desktop/graduate/lms_cdo/lms_cdo/accounts/views.py changed, reloading.
+INFO 2024-05-09 16:41:33,258 autoreload Watching for file changes with StatReloader
+INFO 2024-05-09 16:41:44,436 autoreload /Users/arturnavruzov/Desktop/graduate/lms_cdo/lms_cdo/accounts/views.py changed, reloading.
+INFO 2024-05-09 16:41:44,748 autoreload Watching for file changes with StatReloader
+INFO 2024-05-09 16:41:49,847 autoreload /Users/arturnavruzov/Desktop/graduate/lms_cdo/lms_cdo/accounts/urls.py changed, reloading.
+INFO 2024-05-09 16:41:50,135 autoreload Watching for file changes with StatReloader
+INFO 2024-05-09 16:41:53,269 autoreload /Users/arturnavruzov/Desktop/graduate/lms_cdo/lms_cdo/accounts/urls.py changed, reloading.
+INFO 2024-05-09 16:41:53,451 autoreload Watching for file changes with StatReloader
+INFO 2024-05-09 16:42:50,202 autoreload /Users/arturnavruzov/Desktop/graduate/lms_cdo/lms_cdo/accounts/urls.py changed, reloading.
+INFO 2024-05-09 16:42:50,544 autoreload Watching for file changes with StatReloader
+INFO 2024-05-09 16:43:36,152 autoreload /Users/arturnavruzov/Desktop/graduate/lms_cdo/lms_cdo/accounts/views.py changed, reloading.
+INFO 2024-05-09 16:43:36,478 autoreload Watching for file changes with StatReloader
+INFO 2024-05-09 16:43:38,601 autoreload /Users/arturnavruzov/Desktop/graduate/lms_cdo/lms_cdo/accounts/views.py changed, reloading.
+INFO 2024-05-09 16:43:38,789 autoreload Watching for file changes with StatReloader
+WARNING 2024-05-09 16:43:43,627 log Not Found: /accounts/profile_update/
+WARNING 2024-05-09 16:43:43,632 basehttp "GET /accounts/profile_update/ HTTP/1.1" 404 5494
+WARNING 2024-05-09 16:43:44,346 log Not Found: /accounts/profile_update/
+WARNING 2024-05-09 16:43:44,346 basehttp "GET /accounts/profile_update/ HTTP/1.1" 404 5494
+WARNING 2024-05-09 16:43:47,371 log Not Found: /accounts/profile_update/
+WARNING 2024-05-09 16:43:47,371 basehttp "GET /accounts/profile_update/ HTTP/1.1" 404 5494
+INFO 2024-05-09 16:43:54,212 autoreload /Users/arturnavruzov/Desktop/graduate/lms_cdo/lms_cdo/accounts/views.py changed, reloading.
+INFO 2024-05-09 16:43:54,494 autoreload Watching for file changes with StatReloader
+INFO 2024-05-09 16:43:56,605 autoreload /Users/arturnavruzov/Desktop/graduate/lms_cdo/lms_cdo/accounts/urls.py changed, reloading.
+INFO 2024-05-09 16:43:56,800 autoreload Watching for file changes with StatReloader
+WARNING 2024-05-09 16:43:58,667 log Not Found: /accounts/profile_update/
+WARNING 2024-05-09 16:43:58,670 basehttp "GET /accounts/profile_update/ HTTP/1.1" 404 5494
+WARNING 2024-05-09 16:43:59,227 log Not Found: /accounts/profile_update/
+WARNING 2024-05-09 16:43:59,227 basehttp "GET /accounts/profile_update/ HTTP/1.1" 404 5494
+INFO 2024-05-09 16:44:13,306 basehttp "GET /lms/catalog HTTP/1.1" 200 16132
+INFO 2024-05-09 16:44:13,325 basehttp "GET /media/profile_pictures/24/04/22/images-2.jpeg HTTP/1.1" 200 6577
+INFO 2024-05-09 16:44:13,326 basehttp "GET /media/categories/24/04/16/images.jpeg HTTP/1.1" 200 10648
+INFO 2024-05-09 16:44:13,327 basehttp "GET /static/css/style.css HTTP/1.1" 200 2519
+INFO 2024-05-09 16:44:13,330 basehttp "GET /media/courses/Core-Java.png HTTP/1.1" 200 37207
+INFO 2024-05-09 16:44:13,332 basehttp "GET /media/courses/py.png HTTP/1.1" 200 18195
+INFO 2024-05-09 16:44:13,333 basehttp "GET /static/bootstrap/css/bootstrap.min.css HTTP/1.1" 200 155845
+INFO 2024-05-09 16:44:13,335 basehttp "GET /static/bootstrap/js/bootstrap.bundle.min.js HTTP/1.1" 200 78743
+INFO 2024-05-09 16:44:13,336 basehttp "GET /media/categories/24/04/22/The_image_includes_a_man_shaking_hands_with_a_woman_in_a_b.webp HTTP/1.1" 200 452796
+INFO 2024-05-09 16:44:16,737 basehttp "GET /accounts/profile HTTP/1.1" 200 7693
+ERROR 2024-05-09 16:44:18,430 log Internal Server Error: /accounts/profile/33/edit/
+Traceback (most recent call last):
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/lms_cdo/accounts/views.py", line 93, in edit_profile
+    return render(
+           ^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/template/base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/template/base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/template/base.py", line 961, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/template/loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/template/base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/template/base.py", line 961, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/template/base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/template/base.py", line 961, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/template/base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/template/base.py", line 961, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/template/defaulttags.py", line 479, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/urls/base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/urls/resolvers.py", line 851, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'student_list' not found. 'student_list' is not a valid view function or pattern name.
+ERROR 2024-05-09 16:44:18,433 basehttp "GET /accounts/profile/33/edit/ HTTP/1.1" 500 177890
+INFO 2024-05-09 16:44:59,383 basehttp "GET /accounts/profile/33/edit/ HTTP/1.1" 200 12795
+INFO 2024-05-09 16:45:24,523 basehttp "GET /accounts/profile/33/edit/ HTTP/1.1" 200 12795
+ERROR 2024-05-09 16:45:55,869 log Internal Server Error: /accounts/profile/33/edit/
+Traceback (most recent call last):
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/lms_cdo/accounts/views.py", line 88, in edit_profile
+    return redirect("student_list")
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/shortcuts.py", line 49, in redirect
+    return redirect_class(resolve_url(to, *args, **kwargs))
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/shortcuts.py", line 180, in resolve_url
+    return reverse(to, args=args, kwargs=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/urls/base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/arturnavruzov/Desktop/graduate/lms_cdo/venv/lib/python3.12/site-packages/django/urls/resolvers.py", line 851, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'student_list' not found. 'student_list' is not a valid view function or pattern name.
+ERROR 2024-05-09 16:45:55,873 basehttp "POST /accounts/profile/33/edit/ HTTP/1.1" 500 94943
+INFO 2024-05-09 16:46:41,471 autoreload /Users/arturnavruzov/Desktop/graduate/lms_cdo/lms_cdo/accounts/views.py changed, reloading.
+INFO 2024-05-09 16:46:41,941 autoreload Watching for file changes with StatReloader
+INFO 2024-05-09 16:46:44,096 basehttp "POST /accounts/profile/33/edit/ HTTP/1.1" 302 0
+INFO 2024-05-09 16:46:44,130 basehttp "GET /accounts/profile HTTP/1.1" 200 7699
+INFO 2024-05-09 16:46:44,167 basehttp "GET /media/profile_pictures/24/05/09/images_01c67Ju.jpeg HTTP/1.1" 200 10648
+INFO 2024-05-09 16:46:46,632 basehttp "GET /accounts/profile/33/edit/ HTTP/1.1" 200 12813
+INFO 2024-05-09 16:46:46,640 basehttp "GET /media/profile_pictures/24/05/09/images_01c67Ju.jpeg HTTP/1.1" 304 0
+INFO 2024-05-09 17:01:57,597 autoreload /Users/arturnavruzov/Desktop/graduate/lms_cdo/lms_cdo/accounts/forms.py changed, reloading.
+INFO 2024-05-09 17:01:59,337 autoreload Watching for file changes with StatReloader
+INFO 2024-05-09 17:02:00,940 basehttp "GET /accounts/profile/33/edit/ HTTP/1.1" 200 13099
+INFO 2024-05-09 17:02:00,958 basehttp "GET /media/profile_pictures/24/05/09/images_01c67Ju.jpeg HTTP/1.1" 304 0
+INFO 2024-05-09 17:02:07,585 autoreload /Users/arturnavruzov/Desktop/graduate/lms_cdo/lms_cdo/accounts/forms.py changed, reloading.
+INFO 2024-05-09 17:02:07,980 autoreload Watching for file changes with StatReloader
+INFO 2024-05-09 17:02:17,271 autoreload /Users/arturnavruzov/Desktop/graduate/lms_cdo/lms_cdo/accounts/forms.py changed, reloading.
+INFO 2024-05-09 17:02:17,567 autoreload Watching for file changes with StatReloader
+INFO 2024-05-09 17:02:21,663 autoreload /Users/arturnavruzov/Desktop/graduate/lms_cdo/lms_cdo/accounts/forms.py changed, reloading.
+INFO 2024-05-09 17:02:21,847 autoreload Watching for file changes with StatReloader
+INFO 2024-05-09 17:02:23,642 basehttp "GET /accounts/profile/33/edit/ HTTP/1.1" 200 13112
+INFO 2024-05-09 17:02:24,438 basehttp "GET /accounts/profile/33/edit/ HTTP/1.1" 200 13112
+INFO 2024-05-09 17:02:35,594 basehttp "GET /accounts/profile/33/edit/ HTTP/1.1" 200 13112
+INFO 2024-05-09 17:02:35,619 basehttp "GET /media/profile_pictures/24/05/09/images_01c67Ju.jpeg HTTP/1.1" 200 10648
+INFO 2024-05-09 17:02:35,619 basehttp "GET /static/css/style.css HTTP/1.1" 200 2519
+INFO 2024-05-09 17:02:35,622 basehttp "GET /static/bootstrap/css/bootstrap.min.css HTTP/1.1" 200 155845
+INFO 2024-05-09 17:02:35,622 basehttp "GET /static/bootstrap/js/bootstrap.bundle.min.js HTTP/1.1" 200 78743
+INFO 2024-05-09 17:03:21,199 autoreload /Users/arturnavruzov/Desktop/graduate/lms_cdo/lms_cdo/accounts/views.py changed, reloading.
+INFO 2024-05-09 17:03:21,610 autoreload Watching for file changes with StatReloader
+INFO 2024-05-09 17:03:48,162 autoreload /Users/arturnavruzov/Desktop/graduate/lms_cdo/lms_cdo/accounts/forms.py changed, reloading.
+INFO 2024-05-09 17:03:48,452 autoreload Watching for file changes with StatReloader
+INFO 2024-05-09 17:04:37,916 basehttp "GET /accounts/profile/33/edit/ HTTP/1.1" 200 13452
+INFO 2024-05-09 17:04:37,964 basehttp "GET /media/profile_pictures/24/05/09/images_01c67Ju.jpeg HTTP/1.1" 304 0
+INFO 2024-05-09 17:04:55,675 basehttp "GET /accounts/profile/33/edit/ HTTP/1.1" 302 0
+INFO 2024-05-09 17:04:55,695 basehttp "GET /accounts/login/?next=/accounts/profile/33/edit/ HTTP/1.1" 200 2490
+INFO 2024-05-09 17:04:55,728 basehttp "GET /static/bootstrap/js/bootstrap.bundle.min.js HTTP/1.1" 200 78743
+INFO 2024-05-09 17:04:55,729 basehttp "GET /static/bootstrap/css/bootstrap.min.css HTTP/1.1" 200 155845
+WARNING 2024-05-09 17:04:56,332 log Not Found: /apple-touch-icon-precomposed.png
+WARNING 2024-05-09 17:04:56,333 basehttp "GET /apple-touch-icon-precomposed.png HTTP/1.1" 404 2907
+WARNING 2024-05-09 17:04:56,337 log Not Found: /apple-touch-icon.png
+WARNING 2024-05-09 17:04:56,337 basehttp "GET /apple-touch-icon.png HTTP/1.1" 404 2871
+WARNING 2024-05-09 17:04:56,353 log Not Found: /favicon.ico
+WARNING 2024-05-09 17:04:56,353 basehttp "GET /favicon.ico HTTP/1.1" 404 2844
+INFO 2024-05-09 17:05:07,983 basehttp "POST /accounts/login/?next=/accounts/profile/33/edit/ HTTP/1.1" 302 0
+INFO 2024-05-09 17:05:08,080 basehttp "GET /accounts/profile/33/edit/ HTTP/1.1" 200 13452
+INFO 2024-05-09 17:05:08,090 basehttp "GET /media/profile_pictures/24/05/09/images_01c67Ju.jpeg HTTP/1.1" 200 10648
+INFO 2024-05-09 17:05:08,091 basehttp "GET /static/css/style.css HTTP/1.1" 200 2519
+INFO 2024-05-09 17:05:31,284 basehttp "GET /accounts/profile/33/edit/ HTTP/1.1" 200 13430
+INFO 2024-05-09 17:05:36,770 basehttp "GET /accounts/profile/33/edit/ HTTP/1.1" 200 13430
+INFO 2024-05-09 17:07:16,546 basehttp "GET /accounts/profile/33/edit/ HTTP/1.1" 200 13496
+INFO 2024-05-09 17:07:16,627 basehttp "GET /media/profile_pictures/24/05/09/images_01c67Ju.jpeg HTTP/1.1" 304 0
+INFO 2024-05-09 17:07:34,874 basehttp "GET /accounts/profile/33/edit/ HTTP/1.1" 200 13439
+INFO 2024-05-09 17:07:41,846 basehttp "GET /accounts/profile/33/edit/ HTTP/1.1" 200 13429
+INFO 2024-05-09 17:08:37,896 basehttp "GET /accounts/profile/33/edit/ HTTP/1.1" 200 13527
+INFO 2024-05-09 17:08:48,545 basehttp "GET /accounts/profile/33/edit/ HTTP/1.1" 200 13431
+INFO 2024-05-09 17:09:09,888 basehttp "GET /accounts/profile/33/edit/ HTTP/1.1" 200 13548
+INFO 2024-05-09 17:09:30,160 basehttp "GET /accounts/profile/33/edit/ HTTP/1.1" 200 13558
+INFO 2024-05-09 17:09:30,189 basehttp "GET /media/profile_pictures/24/05/09/images_01c67Ju.jpeg HTTP/1.1" 304 0

@@ -60,7 +60,7 @@
                 </ul>
             </div>
             <hr>
-            <a class="mb-2 link" href="#"><i class="fas fa-user-edit"></i>
+            <a class="mb-2 link" href="{% url 'edit_profile' profile_id=user.pk %}"><i class="fas fa-user-edit"></i>
                 <span class="mobile-hide">Edit Profile</span></a>
             <a class="link" href="{% url 'change_password'%}"><i class="fas fa-lock"></i><span class="mobile-hide">
                     Change password</span></a>
