@@ -10,11 +10,6 @@ logger = logging.getLogger(__name__)
 # Create your views here.
 
 @login_required
-def  home(request):
-    return render(request, 'lms/home.html')
-
-
-@login_required
 def  catalog(request):
     context = {
         'categories': Category.objects.all(),
@@ -66,9 +61,11 @@ def unassign_course(request, course_id):
 @login_required
 def learning(request):
     current_user = get_object_or_404(User, id=request.user.id)
+    blogs = current_user.blogs.all()
     context = {
         'user' : current_user,
         'title': 'My learning',
-        'courses': CourseProgress.objects.filter(user=request.user),
+        'CourseProgress': CourseProgress.objects.filter(user=request.user),
+        'blogs' : blogs, 
     }
     return render(request, 'lms/learning.html', {'context' : context})

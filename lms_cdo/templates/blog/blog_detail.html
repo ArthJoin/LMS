@@ -1,0 +1,85 @@
+{% extends 'base_lms.html' %}
+
+{% block title %} {{context.title}} {% endblock title %}
+{% block navbar%}{% include 'components/back_btn.html' %}
+{% endblock %}
+
+
+{% block content %}
+
+<style>
+
+.blog-category {
+  color: #978f8f; /* Bootstrap's default secondary text color */
+  font-size: 1.2em;
+}
+
+.blog-description,
+.blog-meta {
+  background-color: #ffff; /* Light grey background */
+  padding: 20px;
+  border-radius: 5px;
+  margin-top: 40px;
+}
+
+.blog-meta h2 {
+  font-size: 1.2em;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.blog-meta p {
+  font-size: 0.9em;
+  margin-bottom: 10px;
+}
+
+.blog-meta a.btn {
+  margin-right: 5px;
+  margin-top: 10px;
+}
+
+/* Custom styles for the back button to look less prominent */
+.btn-link {
+  font-weight: normal;
+  color: #007bff;
+  text-decoration: none;
+}
+
+.btn-link:hover {
+  text-decoration: underline;
+}
+
+/* Style for Java icon (if using FontAwesome) */
+.fab.fa-java {
+  color: #f89820; /* Java's color */
+}
+
+</style>
+
+<!-- Summary Panel -->
+
+<div class="container mt-5">
+  <!-- Blog Title -->
+  <h1 class="mt-4">{{ blog.title }}</h1>
+  <!-- Blog Tags -->
+  <h3 class="blog-category">{{ blog.author }}</h3>
+
+  {% if blog.author == request.user %}
+  <a href="{% url 'blogs:edit_blog' blog.pk %}" class="btn btn-primary mt-3">Edit</a>
+  {% endif %}
+  
+  <!-- Blog Main Content -->
+  <div class="row">
+    <!-- Blog Description -->
+    <div class="col-md-12">
+      <div class="blog-description">
+        <h2></h2>
+        <p>{{ blog.content|safe }}</p>
+      </div>
+    </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

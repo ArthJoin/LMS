@@ -10,6 +10,7 @@
   display: flex;
   justify-content: space-between;
   margin-bottom: 20px;
+  text-decoration: none;
 }
 
 .course-card {
@@ -18,6 +19,10 @@
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   width: 300px;
   padding: 15px;
+  transition: all .2s ease-in-out;
+}
+.course-card:hover {
+    box-shadow: 2px 2px 10px #a5a5a5; /* Увеличил тень для большего выделения */
 }
 
 .card-top {
@@ -59,10 +64,11 @@
 }
 
 .progress {
-  width: 33%; /* Процент завершения */
+  width: 5%; /* Процент завершения */
   height: 100%;
   background-color: #4caf50;
   border-radius: 5px;
+  transition: width 0.3s ease-in-out; 
 }
 .container {
     padding: 0px 20px;
@@ -72,9 +78,8 @@
 </style>
 <div class="container bg-light rounded">
 <div class="row">
-    <p>Continue learning</p>
-    {% for course in context.courses %}
-    <div class="col-lg-3 col-md-3 my-lg-0 my-3 courses-container">
+    {% for course in context.CourseProgress %}
+    <a href="{% url 'course_detail' course_id=course.course.pk %}" class="col-lg-3 col-md-3 my-lg-0 my-3 courses-container">
       <div class="course-card">
         <div class="card-top">
           <span class="brand-logo">{{course.status}}</span>
@@ -82,11 +87,97 @@
         <h3 class="course-title">{{course.course.title}}</h3>
         <p class="completion-status">{{course.chapters_completed}}/{{course.course.chapters_count}} completed</p>
         <div class="progress-bar">
-          <div class="progress"></div>
+          <div class="progress" style="width: {{ course.get_progress_percentage }}%;"></div>
         </div>
       </div>
-    </div>
+    </a>
     {% endfor %}
 </div>
+</div>
+<a href="{% url 'blogs:create_blog' %}">     
+    <button type="submit" class="btn btn-primary">Create blog</button>
+</a>
+<style>
+    /* course style */
+    .blog-list {
+        display: flex;
+        flex-wrap: wrap; /* Разрешаем перенос элементов на новую строку */
+    }
+    
+    .blog-card {
+        border-radius: 10px;
+        background: #fff;
+        transition: all .1s ease-in-out;
+        cursor: pointer;
+        margin-bottom: 10px;
+        height: 150px;
+    }
+    .blog-card:hover {
+        box-shadow: 1px 1px 5px #a5a5a5; /* Увеличил тень для большего выделения */
+        transform: scale(1.005);
+    }
+    
+    .blog-content {
+        padding: 20px;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .blog-title {
+        font-size: 1.5em;
+        text-align: left; /* Заголовок оставим слева */
+    }
+    
+    .blog-meta {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+        padding: 5px;
+        justify-content: space-between; /* Добавлено для разделения элементов */
+    }
+    
+    .blog-author, .blog-created {
+        background: #f7f7f7; /* Пример фона для отличия от остального текста */
+        padding: 5px;
+        border-radius: 5px;
+        font-size: 0.9em;
+        color: #333; /* Цвет текста */
+    }
+    
+    .blog-description {
+        font-size: 0.9em;
+        color: #666;
+        margin-top: 10px;
+    }
+    .blog-link {
+        text-decoration: none; /* Убираем подчеркивание */
+        color: inherit; /* Наследуем цвет текста от родительского элемента */
+        margin-bottom: 15px;
+    }
+</style>
+
+<div class="container">
+    <h4 class = "mt-5">My Blogs</h4>
+    <div class="row blog-list">
+        {% for blog in context.blogs %}
+        <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+            <a href="{% url 'blogs:blog_detail' blog_id=blog.pk %}" class="blog-link">
+                <div class="blog-card">
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span class="blog-title">{{ blog.title|truncatewords:3|safe }}</span>
+                            <div style="margin-left: auto;">
+                                <span class="blog-author">{{ blog.author.username }}</span>
+                                <span class="blog-created">{{ blog.created_at|date:"d.m.Y" }}</span>
+                            </div>
+                        </div>
+                        <span class="blog-description">{{ blog.content|truncatewords:10|safe }}</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
 </div>
 {% endblock %}

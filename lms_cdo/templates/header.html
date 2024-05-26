@@ -55,7 +55,13 @@
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
               <li><a class="dropdown-item" href="{% url 'profile' %}">My account</a></li>
               <li><a class="dropdown-item" href="#">Help</a></li>
-              <li><a class="dropdown-item" href="#">Kazakhstan</a></li>
+              <li><form method="post" action="{% url 'logout' %}" class="dropdown-item" >
+                {% csrf_token %}
+                <button type="submit" class="btn ">Sign Out</button>
+                </form></li>
+
+              
+              
               <!-- Add more dropdown items here -->
             </ul>
           </li>

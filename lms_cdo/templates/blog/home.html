@@ -1,0 +1,95 @@
+{% extends 'base_lms.html' %}
+{% load static %}
+
+{% block title %} Главная страница {% endblock %}
+
+{% block content %}
+
+<style>
+    /* course style */
+    .course-list {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .course-card {
+        display: flex;
+        border-radius: 10px;
+        background: #fff;
+        transition: all .1s ease-in-out;
+        cursor: pointer;
+        margin-bottom: 10px; 
+        height: 250px;
+    }
+    .course-card:hover {
+        box-shadow: 1px 1px 5px #a5a5a5; /* Увеличил тень для большего выделения */
+        transform: scale(1.005);
+    }
+    
+    .course-image {
+        width: 150px; /* Адаптируйте размеры под ваш дизайн */
+        object-fit: cover; /* Убедитесь, что изображение полностью заполняет блок */
+        border-top-left-radius: 8px;
+        border-bottom-left-radius: 8px;
+    }
+    
+    .card-content {
+        padding: 20px;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .course-title {
+        font-size: 1.5em;
+        text-align: left; /* Заголовок оставим слева */
+    }
+    
+    .course-meta {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+        padding: 5px;
+        justify-content: space-between; /* Добавлено для разделения элементов */
+    }
+    
+    .blog-author, .blog-created {
+        background: #f7f7f7; /* Пример фона для отличия от остального текста */
+        padding: 5px;
+        border-radius: 5px;
+        font-size: 0.9em;
+        color: #333; /* Цвет текста */
+    }
+    
+    .blog-description {
+        font-size: 0.9em;
+        color: #666;
+        margin-top: 10px;
+    }
+    .course-link {
+        text-decoration: none; /* Убираем подчеркивание */
+        color: inherit; /* Наследуем цвет текста от родительского элемента */
+        margin-bottom: 15px;
+    }
+</style>
+
+<div class="course-list">
+    <h2> Blogs </h2> 
+    {% for blog in blogs %}
+    <a href="{% url 'blogs:blog_detail' blog_id=blog.pk %}" class="course-link"> 
+        <div class="course-card col-lg-12 col-md-12 my-lg-0 my-12">
+            <div class="card-content">
+                <div class="course-meta">
+                    <span class="course-title">{{ blog.title|truncatewords:3|safe }}</span>
+                    <div style="margin-left: auto;">
+                        <span class="blog-author">{{ blog.author.username }}</span>
+                        <span class="blog-created">{{ blog.created_at|date:"d.m.Y" }}</span>
+                    </div>
+                </div>
+                <span class="blog-description">{{ blog.content|truncatewords:50|safe }}</span>
+            </div>
+        </div>
+    </a>
+    {% endfor %}
+</div>
+{% endblock %}

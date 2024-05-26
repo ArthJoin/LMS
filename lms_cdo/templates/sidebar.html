@@ -10,7 +10,7 @@
               {% with request.resolver_match.url_name as url_name %}
               
               <div class="nav_list"> 
-                <a href="{% url 'home' %}" class="{% if url_name == 'home' %}nav_link active{% else %}nav_link{% endif %}"> 
+                <a href="{% url 'blogs:home' %}" class="{% if url_name == 'home' %}nav_link active{% else %}nav_link{% endif %}"> 
                   <i class='bx bx-home-alt nav_icon'></i> 
                   <span class="nav_name">Home</span> 
                 </a> 

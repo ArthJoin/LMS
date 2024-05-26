@@ -48,6 +48,7 @@ PROJECT_APPS = [
     'accounts.apps.AccountsConfig',
     'lms.apps.LmsConfig',
     'course.apps.CourseConfig',
+    'blog.apps.BlogConfig'
 ]
 
 INSTALLED_APPS = DJANGO_APPS + PROJECT_APPS
@@ -155,8 +156,9 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+LOGIN_URL = '/accounts/login/'
 LOGIN_REDIRECT_URL = "/"
-LOGOUT_REDIRECT_URL = "/"
+LOGOUT_REDIRECT_URL = '/'
 
 STUDENT_ID_PREFIX =  "ugr"
 
@@ -204,6 +206,7 @@ TINYMCE_DEFAULT_CONFIG = {
     'width': 1200,
     'cleanup_on_startup': True,
     'custom_undo_redo_levels': 10,
+    'forced_root_block': False,
     'selector': 'textarea',
     'theme': 'silver',
     'plugins': '''

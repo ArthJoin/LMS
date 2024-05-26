@@ -1,0 +1,60 @@
+{% extends "base_lms.html" %}
+{% load static %}
+{% block title %} Создание блога {% endblock %}
+
+
+{% block content %}
+<div class="container">
+    <style>
+
+        .create-blog-form .form-group {
+            margin-bottom: 15px;
+        }
+
+        .create-blog-button {
+            width: 100%;
+            background-color: #007bff;
+            border: none;
+        }
+
+        .create-blog-button:hover {
+            background-color: #0056b3;
+        }
+
+        .back-to-blog {
+            margin-top: 20px;
+        }
+    </style>
+    <script src="{% static 'tinymce/tinymce.min.js' %}"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            tinymce.init({
+                selector: 'textarea',
+                plugins: 'advlist autolink lists link image charmap print preview hr anchor pagebreak',
+                toolbar_mode: 'floating',
+                height: 700,
+                toolbar: 'fullscreen preview bold italic underline | fontselect, fontsizeselect  | forecolor backcolor | alignleft alignright | aligncenter alignjustify | indent outdent | bullist numlist table | link image media | codesample |'
+            });
+        });
+    </script>
+    <div class="container">
+        <div class="create-blog-container">
+            <h2 class="text-center mb-4">Создать блог</h2>
+            <form method="post" class="create-blog-form">
+                {% csrf_token %}
+                {% for f in form %}
+                    <div class="form-group">
+                        {{ f.label_tag }}
+                        {{ f }}
+                        {% if f.errors %}
+                            <div class="text-danger">{{ f.errors }}</div>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+                <button type="submit" class="btn btn-primary create-blog-button">Создать блог</button>
+            </form>
+        </div>
+    </div>
+
+
+{% endblock %}
