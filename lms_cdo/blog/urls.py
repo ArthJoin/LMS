@@ -12,4 +12,6 @@ urlpatterns = [
     path('edit/<int:blog_id>/', views.EditBlog.as_view(), name='edit_blog'),
     path('delete/<int:blog_id>/', views.DeleteBlog.as_view(), name='delete'),
     path('detail/<int:blog_id>/', views.ViewBlog.as_view(), name='blog_detail'),
+    path('like/<str:content_type>/<int:content_id>/', views.LikeView.as_view(), name='like_content'),
 ]
+

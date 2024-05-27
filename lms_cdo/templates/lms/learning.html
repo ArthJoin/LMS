@@ -94,9 +94,6 @@
     {% endfor %}
 </div>
 </div>
-<a href="{% url 'blogs:create_blog' %}">     
-    <button type="submit" class="btn btn-primary">Create blog</button>
-</a>
 <style>
     /* course style */
     .blog-list {
@@ -125,7 +122,7 @@
     }
     
     .blog-title {
-        font-size: 1.5em;
+        font-size: 1.1em;
         text-align: left; /* Заголовок оставим слева */
     }
     
@@ -159,6 +156,9 @@
 
 <div class="container">
     <h4 class = "mt-5">My Blogs</h4>
+    <a href="{% url 'blogs:create_blog' %}">     
+        <button type="submit" class="mb-4 btn btn-primary">Create blog</button>
+    </a>
     <div class="row blog-list">
         {% for blog in context.blogs %}
         <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
@@ -166,13 +166,13 @@
                 <div class="blog-card">
                     <div class="blog-content">
                         <div class="blog-meta">
-                            <span class="blog-title">{{ blog.title|truncatewords:3|safe }}</span>
+                            <span class="blog-title">{{ blog.title|truncatechars:20|safe }}</span>
                             <div style="margin-left: auto;">
                                 <span class="blog-author">{{ blog.author.username }}</span>
                                 <span class="blog-created">{{ blog.created_at|date:"d.m.Y" }}</span>
                             </div>
                         </div>
-                        <span class="blog-description">{{ blog.content|truncatewords:10|safe }}</span>
+                        <span class="blog-description">{{ blog.short_discription|safe }}</span>
                     </div>
                 </div>
             </a>
@@ -180,4 +180,6 @@
         {% endfor %}
     </div>
 </div>
+
+
 {% endblock %}

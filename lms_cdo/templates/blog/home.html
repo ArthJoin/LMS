@@ -6,31 +6,34 @@
 {% block content %}
 
 <style>
-    /* course style */
-    .course-list {
+    /* blog style */
+    .blog-list {
         display: flex;
         flex-direction: column;
     }
     
-    .course-card {
+    .blog-card {
         display: flex;
+        flex-direction: column; /* Изменено на column для вертикальной компоновки */
         border-radius: 10px;
         background: #fff;
         transition: all .1s ease-in-out;
         cursor: pointer;
         margin-bottom: 10px; 
-        height: 250px;
     }
-    .course-card:hover {
+    
+    .blog-card:hover {
         box-shadow: 1px 1px 5px #a5a5a5; /* Увеличил тень для большего выделения */
         transform: scale(1.005);
     }
     
-    .course-image {
-        width: 150px; /* Адаптируйте размеры под ваш дизайн */
+    .blog-image {
+        width: 100%; /* Адаптировано для полного заполнения ширины */
+        height: 150px; /* Задаем фиксированную высоту */
         object-fit: cover; /* Убедитесь, что изображение полностью заполняет блок */
-        border-top-left-radius: 8px;
-        border-bottom-left-radius: 8px;
+        border-top: 8px;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
     }
     
     .card-content {
@@ -40,12 +43,12 @@
         flex-direction: column;
     }
     
-    .course-title {
-        font-size: 1.5em;
+    .blog-title {
+        font-size: 1.1em;
         text-align: left; /* Заголовок оставим слева */
     }
     
-    .course-meta {
+    .blog-meta {
         display: flex;
         align-items: center;
         margin-bottom: 10px;
@@ -66,27 +69,28 @@
         color: #666;
         margin-top: 10px;
     }
-    .course-link {
+    .blog-link {
         text-decoration: none; /* Убираем подчеркивание */
         color: inherit; /* Наследуем цвет текста от родительского элемента */
         margin-bottom: 15px;
     }
 </style>
 
-<div class="course-list">
+<div class="blog-list">
     <h2> Blogs </h2> 
     {% for blog in blogs %}
-    <a href="{% url 'blogs:blog_detail' blog_id=blog.pk %}" class="course-link"> 
-        <div class="course-card col-lg-12 col-md-12 my-lg-0 my-12">
+    <a href="{% url 'blogs:blog_detail' blog_id=blog.pk %}" class="blog-link"> 
+        <div class="blog-card col-lg-4 col-md-4 my-lg-0 my-4">
+            <img src="{{ blog.image.url }}" alt="Blog Image" class="blog-image">
             <div class="card-content">
-                <div class="course-meta">
-                    <span class="course-title">{{ blog.title|truncatewords:3|safe }}</span>
+                <div class="blog-meta">
+                    <span class="blog-title">{{ blog.title|truncatechars:20|safe }}</span>
                     <div style="margin-left: auto;">
                         <span class="blog-author">{{ blog.author.username }}</span>
                         <span class="blog-created">{{ blog.created_at|date:"d.m.Y" }}</span>
                     </div>
                 </div>
-                <span class="blog-description">{{ blog.content|truncatewords:50|safe }}</span>
+                <span class="blog-description">{{ blog.short_discription|safe }}</span>
             </div>
         </div>
     </a>

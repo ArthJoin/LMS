@@ -129,10 +129,7 @@ class StudentAddForm(UserCreationForm):
         generated_username = (
             f"{settings.STUDENT_ID_PREFIX}-{registration_date}-{total_students_count}"
         )
-        # Generate a password
-        #generated_password = User.objects.make_random_password()
-
-        #user.username = generated_username
+        
         user.set_password(self.cleaned_data.get("password1"))
 
         if commit:

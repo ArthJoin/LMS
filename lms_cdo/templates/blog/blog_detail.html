@@ -1,82 +1,244 @@
 {% extends 'base_lms.html' %}
 
 {% block title %} {{context.title}} {% endblock title %}
-{% block navbar%}{% include 'components/back_btn.html' %}
-{% endblock %}
-
+{% block navbar %}{% include 'components/back_btn.html' %}{% endblock %}
 
 {% block content %}
 
 <style>
+.blog-author {
+  color: #333;
+  font-size: 1.2em;
+  font-weight: bold;
+}
 
 .blog-category {
-  color: #978f8f; /* Bootstrap's default secondary text color */
-  font-size: 1.2em;
+  color: #978f8f;
+  font-size: 1em;
+  margin-top: 5px;
 }
 
-.blog-description,
 .blog-meta {
-  background-color: #ffff; /* Light grey background */
-  padding: 20px;
-  border-radius: 5px;
-  margin-top: 40px;
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
 }
 
-.blog-meta h2 {
-  font-size: 1.2em;
-  color: #333;
-  margin-bottom: 15px;
+.profile-image {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 15px;
 }
 
-.blog-meta p {
+.blog-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.blog-info span {
   font-size: 0.9em;
-  margin-bottom: 10px;
+  color: #666;
 }
 
-.blog-meta a.btn {
-  margin-right: 5px;
+.blog-description {
+  border-radius: 5px;
   margin-top: 10px;
 }
 
-/* Custom styles for the back button to look less prominent */
-.btn-link {
-  font-weight: normal;
-  color: #007bff;
+.center-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+}
+
+.blog-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #eee;
+  padding: 10px 0;
+  margin-top: 20px;
+}
+
+.blog-actions .left,
+.blog-actions .right {
+  display: flex;
+  align-items: center;
+}
+
+.blog-actions .left span,
+.blog-actions .right span {
+  font-size: 0.9em;
+  color: #666;
+  margin-left: 5px;
+}
+
+.blog-actions i {
+  font-size: 1.2em;
+  color: #666;
+}
+
+.like-button,
+.comment-link {
+  display: flex;
+  align-items: center;
+  color: inherit;
   text-decoration: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin-right: 10px;
 }
 
-.btn-link:hover {
-  text-decoration: underline;
+.like-button:hover,
+.comment-link:hover,
+.edit-btn:hover {
+  color: #333;
 }
 
-/* Style for Java icon (if using FontAwesome) */
-.fab.fa-java {
-  color: #f89820; /* Java's color */
+.comments-section {
+  margin-top: 40px;
 }
 
+.comment {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #eee;
+}
+
+.comment .profile-image {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+}
+
+.comment .comment-content {
+  background-color: #f8f8f8;
+  border-radius: 5px;
+  width: 100%;
+}
+
+.comment .comment-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.comment .comment-author {
+  font-weight: bold;
+  margin-right: 10px;
+  font-size: 0.8em;
+}
+
+.comment .comment-date {
+  font-size: 0.5em;
+  color: #666;
+}
+
+.comment-form {
+  margin-top: 30px;
+  margin-bottom: 150px;
+}
+
+.comment-form textarea {
+  width: 100%;
+  height: 70px;
+  margin-bottom: 10px;
+}
+
+.send-button {
+  display: flex;
+  align-self: flex-end;
+  align-items: center;
+  justify-content: center;
+  background-color: #f8f8f8;
+  padding: 5px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration:none;
+  transition: all .2s ease-in-out;
+}
+
+.send-button i {
+    margin-right: 5px;
+}
+
+.send-button:hover {
+  background-color: #888;
+}
 </style>
 
-<!-- Summary Panel -->
-
-<div class="container mt-5">
-  <!-- Blog Title -->
-  <h1 class="mt-4">{{ blog.title }}</h1>
-  <!-- Blog Tags -->
-  <h3 class="blog-category">{{ blog.author }}</h3>
-
-  {% if blog.author == request.user %}
-  <a href="{% url 'blogs:edit_blog' blog.pk %}" class="btn btn-primary mt-3">Edit</a>
-  {% endif %}
-  
-  <!-- Blog Main Content -->
-  <div class="row">
-    <!-- Blog Description -->
-    <div class="col-md-12">
-      <div class="blog-description">
-        <h2></h2>
-        <p>{{ blog.content|safe }}</p>
+<div class="container mt-5 center-container">
+  <div class="col-md-8">
+    <h1 class="mt-4">{{ blog.title }}</h1>
+    <div class="blog-meta">
+      <img src="{{ blog.author.picture.url }}" alt="Profile" class="profile-image">
+      <div class="blog-info">
+        <span class="blog-author">{{ blog.author }}</span>
+        <span class="blog-category">Published in - {{ blog.created_at|date:"M d, Y" }}</span>
       </div>
     </div>
+
+    <div class="blog-actions">
+      <div class="left">
+        <form method="post" action="{% url 'blogs:like_content' 'blog' blog.id %}">
+          {% csrf_token %}
+          <button type="submit" class="like-button"><i class='bx bx-like'></i><span>{{ blog.total_likes }}</span></button>
+        </form>
+        <a class="comment-link" href="#comments-section"><i class='bx bx-comment'></i><span>{{blog.total_comments}}</span></a>
+      </div>
+      <div class="right">
+        {% if blog.author == request.user %}
+        <a href="{%url 'blogs:edit_blog' blog_id=blog.pk%}" class="edit-btn"><i class='bx bx-edit'></i></a>
+        {% endif %}
+      </div>
+    </div>
+  
+    <!-- Blog Main Content -->
+    <div class="blog-description">
+      <p>{{ blog.content|safe }}</p>
+    </div>
+
+    <!-- Comments Section -->
+    <div id="comments-section" class="comments-section">
+      <h3>Комментарии</h3>
+      {% for comment in comments %}
+      <div class="comment">
+        <div class="comment-content">
+          <div class="comment-header">
+            <img src="{{ comment.author.picture.url }}" alt="Profile" class="profile-image">
+            <div>
+                <div class="comment-author">{{ comment.author }}</div>
+                <div class="comment-date">{{ comment.created_at|date:"M d, Y H:i" }}</div>
+            </div>
+          </div>
+          <p>{{ comment.content }}</p>
+        </div>
+        <form method="post" action="{% url 'blogs:like_content' 'comment' comment.id %}">
+            {% csrf_token %}
+            <button type="submit" class="like-button">
+              <i class='bx bx-like'></i>
+              <span>{{ comment.total_likes }}</span>
+            </button>
+        </form>
+      </div>
+      {% endfor %}
+  
+      <!-- Comment Form -->
+      <div class="comment-form">
+        <form method="post">
+          {% csrf_token %}
+          <div class="comment-input">
+            <label for="id_content">Ваш комментарий</label>
+            {{ form.content }}
+          </div>
+          <button type="submit" class="send-button"><i class='bx bx-send'></i>Отправить</button>
+        </form>
       </div>
     </div>
   </div>

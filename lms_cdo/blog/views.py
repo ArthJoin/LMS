@@ -6,8 +6,8 @@ from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect, get_object_or_404
 
-from .models import Blog 
-from .forms import BlogForm
+from .models import Blog, Comments
+from .forms import BlogForm, CommentForm
 from accounts.models import User
 
 
@@ -26,12 +26,32 @@ class ViewAllBlogs(View):
 class ViewBlog(View):
     def get(self, request, blog_id):
         blog = get_object_or_404(Blog, pk=blog_id)
+        comments = blog.comments.all()
+        form = CommentForm()
         context = {
             'title': 'Детали блога',
             'blog': blog, 
+            'comments': comments,
+            'form': form,
         }
 
         return render(request, 'blog/blog_detail.html', context=context)
+    def post(self, request, blog_id):
+        blog = get_object_or_404(Blog, id=blog_id)
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.post = blog
+            comment.author = request.user
+            comment.save()
+            return redirect('blogs:blog_detail', blog_id=blog_id)
+        comments = blog.comments.all()
+        context = {
+            'blog': blog,
+            'comments': comments,
+            'form': form,
+        }
+        return render(request, 'blog/blog_detail.html', context)
 
 
 class CreateBlogView(View):     # создать
@@ -81,13 +101,12 @@ class EditBlog(View):   # редактировать
         return render(request, 'blog/edit_blog.html', context=context)
     
     def post(self, request, blog_id):
-        blog = Blog.objects.get(id=blog_id)
-        form = BlogForm(request.POST)
-        if form.is_valid():   
-                blog.title = request.POST['title']
-                blog.content = request.POST['content']            
-                blog.save()
-                return redirect(reverse_lazy('blogs:index'))
+        blog = get_object_or_404(Blog, id=blog_id)
+        form = BlogForm(request.POST, request.FILES, instance=blog)
+
+        if form.is_valid():
+            form.save()
+            return redirect(reverse_lazy('blogs:home'))
         else:
             context = {
                 'title': 'Редактировать блог',
@@ -97,10 +116,29 @@ class EditBlog(View):   # редактировать
             }
             return render(request, 'blog/edit_blog.html', context=context)
 
-
 class DeleteBlog(View): # удаление
     def get(self, request, blog_id):
         blog = Blog.objects.get(id=blog_id)
         blog.delete()
 
         return redirect(reverse_lazy('accounts:profile'))
+    
+
+class LikeView(View):
+    def post(self, request, content_type, content_id):
+        if content_type == 'blog':
+            content = get_object_or_404(Blog, id=content_id)
+        elif content_type == 'comment':
+            content = get_object_or_404(Comments, id=content_id)
+        else:
+            return redirect('blogs:home')
+        
+        if request.user in content.likes.all():
+            content.likes.remove(request.user)
+        else:
+            content.likes.add(request.user)
+        
+        if content_type == 'blog':
+            return redirect('blogs:blog_detail', blog_id=content.id)
+        else:
+            return redirect('blogs:blog_detail', blog_id=content.post.id)
